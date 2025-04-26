@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Services.Analytics;
 using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
@@ -7,6 +8,8 @@ public class PauseMenu : MonoBehaviour
     public static bool PauseGame = false;
     public GameObject pauseMenuUI;
     public Behaviour PauseCanvas;
+    
+    public int ccuIndex;
 
     // Update is called once per frame
     void Update()
@@ -42,7 +45,11 @@ public class PauseMenu : MonoBehaviour
 
     public void Exit()
     {
-        Debug.Log("Quitting game...");
+        /*ccuIndex--;
+        AnalyticsManager.Instance.CcuAnalytics(ccuIndex);
+        AnalyticsService.Instance.Flush();
+        Debug.Log($"CCU Event {ccuIndex}");*/
+        //Debug.Log("Quitting game...");
         Application.Quit();
     }
 

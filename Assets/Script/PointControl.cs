@@ -19,7 +19,21 @@ public class PointControl : MonoBehaviour
 
     void Update()
     {
-        // You can add any additional update logic here if needed
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            AnalyticsManager.Instance.ReplayTotal++;
+            AnalyticsManager.Instance.ReplayRate();
+            
+            Debug.Log($"ReplayTotal: {AnalyticsManager.Instance.ReplayTotal}");
+            
+            AnalyticsManager.Instance.PlayerIndex++;
+            AnalyticsManager.Instance.ReplayRate();
+            
+            //Debug.Log($"ReplayTotal: {AnalyticsManager.Instance.ReplayTotal}");
+            
+            timerManager.StopTimer();
+            SceneManager.LoadScene(4);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -33,6 +47,16 @@ public class PointControl : MonoBehaviour
 
         if (score >= 7)
         {
+            AnalyticsManager.Instance.ReplayTotal++;
+            AnalyticsManager.Instance.ReplayRate();
+            
+            Debug.Log($"ReplayTotal: {AnalyticsManager.Instance.ReplayTotal}");
+            
+            AnalyticsManager.Instance.PlayerIndex++;
+            AnalyticsManager.Instance.ReplayRate();
+            
+            //Debug.Log($"Player Total: {AnalyticsManager.Instance.PlayerIndex}");
+            
             // Stop the timer when the player wins
             timerManager.StopTimer();
             // Load the victory scene (Scene 4)
